@@ -33,19 +33,25 @@ class Deck
     end
 
     def cards
-          @cards = @card_values.product(@suit_values)
-    binding.pry
+          @full_deck = []
+          @full_deck = @card_values.product(@suit_values)
     end
+
+    # def hand
+    #       @hand = []
+    # end
 
     def draw
-      #cards.sample.shift.push(hand)
-
+      drawn_card = []
+      @shuffled_deck = @full_deck.shuffle!
+      @shuffled_deck.shift(@drawn_card)
+      binding.pry
     end
 
-    def hand
-      def initialize
-        hand = []
-      end
-    end
 
+    # def drawn_card
+    #   drawn_card = []
+    #   shuffled_deck = @full_deck.shuffle!
+    #   drawn_card.shift(shuffled_deck)
+    # end
 end
