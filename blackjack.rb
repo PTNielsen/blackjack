@@ -15,8 +15,8 @@ class Card
   def value
     if @values == :K || @values == :Q || @values == :J
       10
-      elsif @values == :A       # Need to make the value :A dependent on what Hand is already equal to
-            11                             # for instance, if Hand <= 10; :A == 11    else :A == 1.
+      elsif @values == :A
+            11
       else
           @values.to_i
       end
