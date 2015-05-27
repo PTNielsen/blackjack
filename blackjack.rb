@@ -47,21 +47,32 @@ class Deck
 
 end
 
-class Hand < Card
+class Hand
 
     def initialize(hand = 0)
       @hand = hand
+      @my_cards = []
+    end
+
+    def value
+      value_of_cards = 0
+      @my_cards.each do | my_card |
+        value_of_cards += my_card.value
+      end
+        return value_of_cards
     end
 
      def add *cards
-      # cards.each do
+       cards.each do | card |
+        @my_cards.push(card)
+      end
      end
 
     def blackjack?
-      true if @hand == 21
+      value == 21 && @my_cards.count == 2
     end
 
     def busted?
-      true if @hand > 21
+      value  > 21
     end
 end
