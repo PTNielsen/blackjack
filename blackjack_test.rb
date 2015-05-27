@@ -1,5 +1,7 @@
 require './blackjack'
 require 'minitest/autorun'
+require 'minitest/reporters'
+Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
  
 class TestCard < Minitest::Test
   def test_number_card_value
@@ -19,6 +21,11 @@ class TestCard < Minitest::Test
   def test_ace_value
     card = Card.new(:A, :D)
     assert_equal card.value, 11
+  end
+
+  def test_can_convert_to_string
+    card = Card.new(:A, :S)
+    assert_equal "AS", card.to_s
   end
 end
  
