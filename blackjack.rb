@@ -16,8 +16,8 @@ class Card
     def value
         if @values == :K || @values == :Q || @values == :J
             10
-        elsif @values == :A
-            1
+        elsif @values == :A       # Need to make the value :A dependent on what Hand is already equal to
+            11                             # for instance, if Hand > 10; :A == 11    else :A == 1.
         else
             @values.to_i
         end
@@ -37,21 +37,29 @@ class Deck
           @full_deck = @card_values.product(@suit_values)
     end
 
-    # def hand
-    #       @hand = []
-    # end
-
     def draw
-      drawn_card = []
+      @drawn_card = []
       @shuffled_deck = @full_deck.shuffle!
       @shuffled_deck.shift(@drawn_card)
-      binding.pry
     end
 
+end
 
-    # def drawn_card
-    #   drawn_card = []
-    #   shuffled_deck = @full_deck.shuffle!
-    #   drawn_card.shift(shuffled_deck)
-    # end
+class Hand < Card
+
+    def initialize(hand = 0)
+      @hand = hand
+    end
+
+     def add *cards
+
+     end
+
+    def blackjack?
+      true if @hand == 21
+    end
+
+    def busted?
+      true if @hand > 21
+    end
 end

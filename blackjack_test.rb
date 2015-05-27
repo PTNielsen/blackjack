@@ -18,7 +18,7 @@ class TestCard < Minitest::Test
  
   def test_ace_value
     card = Card.new(:A, :D)
-    assert_equal card.value, 1
+    assert_equal card.value, 11
   end
 end
  
