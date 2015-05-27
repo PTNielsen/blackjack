@@ -8,18 +8,21 @@ class Card
     @suit = suit
   end
 
+  def to_s
+    "#{@values}#{@suit}"
+  end
 
   def value
     if @values == :K || @values == :Q || @values == :J
       10
-        elsif @values == :A       # Need to make the value :A dependent on what Hand is already equal to
+      elsif @values == :A       # Need to make the value :A dependent on what Hand is already equal to
             11                             # for instance, if Hand <= 10; :A == 11    else :A == 1.
-          else
-            @values.to_i
-          end
-        end
-
+      else
+          @values.to_i
       end
+  end
+
+end
 
       class Deck 
 
@@ -50,7 +53,6 @@ class Card
       class Hand
 
         def initialize(hand = 0)
-          @hand = hand
           @my_cards = []
         end
 
@@ -77,6 +79,14 @@ class Card
 
       def blackjack?
         value == 21 && @my_cards.count == 2
+      end
+
+      def to_s
+        hand_as_string = []
+        @my_cards.each do | card |
+          hand_as_string.push(card.to_s)
+        end
+        hand_as_string.join(", ")
       end
 
       def busted?
