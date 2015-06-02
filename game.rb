@@ -69,7 +69,7 @@ def play_again? deck, user, dealer
   print "Would you like to play again? Enter 'y' for 'Yes' or any other key for 'No': "
   decision = gets.chomp
   if decision == "y"
-    begin_game(deck, user, dealer)
+    begin_game
   else
     game_over
   end
@@ -79,11 +79,10 @@ def game_over
   puts "OK! See you later!"
 end
 
-user = Hand.new
-dealer = Hand.new
-deck = Deck.new
-
-def begin_game deck, user, dealer
+def begin_game
+  user = Hand.new
+  dealer = Hand.new
+  deck = Deck.new
   system "clear"
   deal_hands(deck, user, dealer)
   hit?(deck, user, dealer)
@@ -97,7 +96,7 @@ ready_to_play = gets.chomp
 ready_to_play = "y"
   if ready_to_play == "y"
     puts "Good luck!"
-    begin_game(deck, user, dealer)
+    begin_game
   else
     puts "Maybe next time!"
     game_over
