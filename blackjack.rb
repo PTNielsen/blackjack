@@ -1,4 +1,3 @@
-# require "./blackjack_test"
 require "pry"
 
 class Card
